@@ -41,13 +41,13 @@ public class Model {
 	}
 
 	protected void updateComposite() {
-		//okay obviously this is a temporary placeholder
+		// okay obviously this is a temporary placeholder
 		composite_ = images_[ 0 ];
 	}
-	
-	public void recursivelySave( ObjectOutputStream out ){
-		//images_[ 0 ].getData().getDataBuffer().
-		
+
+	public void recursivelySave( ObjectOutputStream out ) {
+		// images_[ 0 ].getData().getDataBuffer().
+
 	}
-	
+
 }
