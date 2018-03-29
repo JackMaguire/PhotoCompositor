@@ -7,7 +7,7 @@ public class Model {
 	private final BufferedImage[] images_;
 	private double[] weights_;
 
-	private final BufferedImage composite_;
+	private BufferedImage composite_;
 
 	public Model( BufferedImage[] images ) {
 		images_ = images;
@@ -38,4 +38,9 @@ public class Model {
 		return composite_;
 	}
 
+	protected void updateComposite() {
+		//okay obviously this is a temporary placeholder
+		composite_ = images_[ 0 ];
+	}
+	
 }
