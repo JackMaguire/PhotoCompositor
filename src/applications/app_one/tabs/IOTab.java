@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 
 public class IOTab extends JPanel {
 
+	private static final long serialVersionUID = 800357897265322545L;
+
 	public final static String NAME = "IO";
 
 	private JButton save_image_button = new JButton("Save Image");
