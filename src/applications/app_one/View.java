@@ -2,6 +2,7 @@ package applications.app_one;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -99,8 +100,19 @@ public class View {
 			final int image_width = image_.getWidth();
 			final int image_height = image_.getHeight();
 
-			final int pane_width = getWidth();
+			final int panel_width = getWidth();
 			final int panel_height = getHeight();
+			
+			final double scale = getScale( panel_width, panel_height, image_width, image_height );
+			final int scaled_image_width = (int) ( image_width * scale );
+			final int scaled_image_height = (int) ( image_height * scale );
+			
+			final int side_buffersize = ( panel_width - scaled_image_width ) / 2;
+			final int top_buffersize = ( panel_height - scaled_image_height ) / 2;
+			
+			g2.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC );
+			g2.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
+			g2.drawImage( image_, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
 		}
 	}
 }
