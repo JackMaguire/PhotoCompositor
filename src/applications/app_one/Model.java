@@ -20,7 +20,7 @@ public class Model {
 
 		weights_ = new double[ images.length ];
 		for( int i = 0; i < weights_.length; ++i ) {
-			weights_[ i ] = 1.0 / ( (double) weights_.length );
+			weights_[ i ] = 1.0;
 		}
 	}
 
