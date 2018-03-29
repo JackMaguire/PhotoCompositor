@@ -1,4 +1,4 @@
-package applications;
+package applications.app_one;
 
 public class AppOne {
 
