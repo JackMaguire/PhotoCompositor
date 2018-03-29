@@ -1,5 +1,17 @@
 package applications.app_one.tabs;
 
-public class IOTab {
+import javax.swing.JPanel;
+
+public class IOTab extends JPanel {
+
+	public final static String NAME = "IO";
+
+	public IOTab() {
+
+	}
+
+	public final static class SaveButton {
+
+	}
 
 }

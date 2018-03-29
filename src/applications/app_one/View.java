@@ -1,7 +1,11 @@
 package applications.app_one;
 
+import javax.swing.JTabbedPane;
+
 public class View {
 
+	// Yikes! This only appears to format correctly on my computer.
+	// TODO tabs -> spaces to possibly fix this
 	/*   Plan:
 	 * 
 	 * 		.------------------------------.
@@ -47,6 +51,8 @@ public class View {
 	 * 
 	 */
 
+	final JTabbedPane tabs = new JTabbedPane();
+	
 	public View(){
 		
 	}
