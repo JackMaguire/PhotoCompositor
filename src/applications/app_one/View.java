@@ -5,9 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 public class View {
 
+	// Yikes! This only appears to format correctly on my computer.
+	// TODO tabs -> spaces to possibly fix this
 	/*   Plan:
 	 * 
 	 * 		.------------------------------.
@@ -56,7 +59,11 @@ public class View {
 	//private data
 	private final CompositeView composite_view_ = new CompositeView();
 	
+	final JTabbedPane tabs = new JTabbedPane();
 	
+	public View(){
+		
+	}
 	
 	private final static class CompositeView extends JPanel{
 
@@ -95,7 +102,5 @@ public class View {
 			final int pane_width = getWidth();
 			final int panel_height = getHeight();
 		}
-		
 	}
-	
 }

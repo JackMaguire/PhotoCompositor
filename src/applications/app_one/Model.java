@@ -1,6 +1,8 @@
 package applications.app_one;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.ObjectOutputStream;
 
 public class Model {
 
@@ -20,7 +22,7 @@ public class Model {
 
 		weights_ = new double[ images.length ];
 		for( int i = 0; i < weights_.length; ++i ) {
-			weights_[ i ] = 1.0 / ( (double) weights_.length );
+			weights_[ i ] = 1.0;
 		}
 	}
 
@@ -41,6 +43,11 @@ public class Model {
 	protected void updateComposite() {
 		//okay obviously this is a temporary placeholder
 		composite_ = images_[ 0 ];
+	}
+	
+	public void recursivelySave( ObjectOutputStream out ){
+		//images_[ 0 ].getData().getDataBuffer().
+		
 	}
 	
 }
