@@ -74,7 +74,7 @@ public class View {
 		private BufferedImage image_ = null;
 
 		public CompositeView() {
-
+			
 		}
 
 		public void setImage( BufferedImage image ) {
