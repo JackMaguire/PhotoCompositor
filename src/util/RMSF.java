@@ -8,25 +8,25 @@ public class RMSF {
 	// testing
 	public static void main( String[] args ) {
 
-		if( args.length < 2 ){
-			System.out.println( "Every argument should be a photo filename. RMSF test output will be saved to rmsf_test.png" );
+		if( args.length < 2 ) {
+			System.out
+					.println( "Every argument should be a photo filename. RMSF test output will be saved to rmsf_test.png" );
 		}
-		
 
 		final BufferedImage[] images = new BufferedImage[ args.length ];
 		for( int i = 0; i < args.length; ++i ) {
 			images[ i ] = PhotoIO.imageFromFile( args[ i ] );
 		}
 
-		//Scale images so that they are all the same dimensions
+		// Scale images so that they are all the same dimensions
 		final int width = images[ 0 ].getWidth();
 		final int height = images[ 0 ].getHeight();
-		for( int i = 1; i < images.length; ++i ){
-			if( images[ i ].getWidth() != width || images[ i ].getHeight() != height ){
+		for( int i = 1; i < images.length; ++i ) {
+			if( images[ i ].getWidth() != width || images[ i ].getHeight() != height ) {
 				images[ i ] = ImageScaling.scale( images[ i ], width, height );
 			}
 		}
-		
+
 		final BufferedImage rmsf_test = RMSFImage( images, 10 );
 		PhotoIO.imageToFile( rmsf_test, "rmsf_test.png", "PNG" );
 	}
