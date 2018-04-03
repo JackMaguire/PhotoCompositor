@@ -5,6 +5,17 @@ import java.awt.image.BufferedImage;
 
 public class RMSF {
 
+	//testing
+	public static void main(String[] args){
+		BufferedImage[] images = new BufferedImage[ args.length ];
+		for( int i=0; i<args.length; ++i ){
+			images[ i ] = PhotoIO.imageFromFile( args[ i ] );
+		}
+		
+		BufferedImage rmsf_test = RMSFImage( images, 10 );
+		PhotoIO.imageToFile( rmsf_test, "test.png", "PNG" );
+	}
+	
 	public static BufferedImage RMSFImage( final BufferedImage[] images, double scale ) {
 
 		final int width = images[ 0 ].getWidth();
