@@ -7,13 +7,21 @@ public class RMSF {
 
 	// testing
 	public static void main( String[] args ) {
-		BufferedImage[] images = new BufferedImage[ args.length ];
+
+		if( args.length < 2 ){
+			System.out.println( "Every argument should be a photo filename. RMSF test output will be saved to rmsf_test.png" );
+		}
+		
+
+		final BufferedImage[] images = new BufferedImage[ args.length ];
 		for( int i = 0; i < args.length; ++i ) {
 			images[ i ] = PhotoIO.imageFromFile( args[ i ] );
 		}
 
-		BufferedImage rmsf_test = RMSFImage( images, 10 );
-		PhotoIO.imageToFile( rmsf_test, "test.png", "PNG" );
+		final int width = images[ 0 ].getWidth();
+		
+		final BufferedImage rmsf_test = RMSFImage( images, 10 );
+		PhotoIO.imageToFile( rmsf_test, "rmsf_test.png", "PNG" );
 	}
 
 	public static BufferedImage RMSFImage( final BufferedImage[] images, double scale ) {
