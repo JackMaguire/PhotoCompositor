@@ -18,7 +18,14 @@ public class RMSF {
 			images[ i ] = PhotoIO.imageFromFile( args[ i ] );
 		}
 
+		//Scale images so that they are all the same dimensions
 		final int width = images[ 0 ].getWidth();
+		final int height = images[ 0 ].getHeight();
+		for( int i = 1; i < images.length; ++i ){
+			if( images[ i ].getWidth() != width || images[ i ].getHeight() != height ){
+				images[ i ] = ImageScaling.scale( images[ i ], width, height );
+			}
+		}
 		
 		final BufferedImage rmsf_test = RMSFImage( images, 10 );
 		PhotoIO.imageToFile( rmsf_test, "rmsf_test.png", "PNG" );
@@ -27,7 +34,7 @@ public class RMSF {
 	public static BufferedImage RMSFImage( final BufferedImage[] images, double scale ) {
 
 		final int width = images[ 0 ].getWidth();
-		final int height = images[ 1 ].getHeight();
+		final int height = images[ 0 ].getHeight();
 
 		BufferedImage rmsf_image = new BufferedImage( width, height, images[ 0 ].getType() );
 		int[][] colors = new int[ images.length ][ 3 ];// reuse this for each i & j
