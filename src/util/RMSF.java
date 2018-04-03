@@ -5,35 +5,35 @@ import java.awt.image.BufferedImage;
 
 public class RMSF {
 
-	//testing
-	public static void main(String[] args){
+	// testing
+	public static void main( String[] args ) {
 		BufferedImage[] images = new BufferedImage[ args.length ];
-		for( int i=0; i<args.length; ++i ){
+		for( int i = 0; i < args.length; ++i ) {
 			images[ i ] = PhotoIO.imageFromFile( args[ i ] );
 		}
-		
+
 		BufferedImage rmsf_test = RMSFImage( images, 10 );
 		PhotoIO.imageToFile( rmsf_test, "test.png", "PNG" );
 	}
-	
+
 	public static BufferedImage RMSFImage( final BufferedImage[] images, double scale ) {
 
 		final int width = images[ 0 ].getWidth();
 		final int height = images[ 1 ].getHeight();
 
 		BufferedImage rmsf_image = new BufferedImage( width, height, images[ 0 ].getType() );
-		int[][] colors = new int[ images.length ][ 3 ];//reuse this for each i & j
-		
-		for( int i=0; i<width; ++i ){
-			for( int j=0; j<height; ++j ){
-				
-				for( int k = 0; k < images.length; ++k ){
+		int[][] colors = new int[ images.length ][ 3 ];// reuse this for each i & j
+
+		for( int i = 0; i < width; ++i ) {
+			for( int j = 0; j < height; ++j ) {
+
+				for( int k = 0; k < images.length; ++k ) {
 					Color color = new Color( images[ k ].getRGB( i, j ) );
 					colors[ k ][ 0 ] = color.getRed();
 					colors[ k ][ 1 ] = color.getGreen();
 					colors[ k ][ 2 ] = color.getBlue();
 				}
-				
+
 				double rmsf = 0;
 				try {
 					rmsf = calcRMSF( colors );
@@ -42,13 +42,13 @@ public class RMSF {
 					System.err.println( e.getLocalizedMessage() );
 					e.printStackTrace();
 				}
-				
-				final int rgb_value = Math.max( 255, (int) ( scale * 255 * rmsf ) ); 
-				final int hash_code = new Color(rgb_value,rgb_value,rgb_value).hashCode();
+
+				final int rgb_value = Math.max( 255, (int) ( scale * 255 * rmsf ) );
+				final int hash_code = new Color( rgb_value, rgb_value, rgb_value ).hashCode();
 				rmsf_image.setRGB( i, j, hash_code );
-			} //j
-		} //i
-		
+			} // j
+		} // i
+
 		return rmsf_image;
 	}
 
