@@ -1,6 +1,7 @@
 #Compiled Directories
 bin
 build
+temp
 
 #Emacs
 *~
