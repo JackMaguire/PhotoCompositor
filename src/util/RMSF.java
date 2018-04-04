@@ -58,8 +58,16 @@ public class RMSF {
 					e.printStackTrace();
 				}
 
-				final int rgb_value = Math.max( 255, (int) ( scale * 255 * rmsf ) );
-				final int hash_code = new Color( rgb_value, rgb_value, rgb_value ).hashCode();
+				final int rgb_value = Math.min( 255, (int) ( scale * 255 * rmsf ) );
+				Color rmsf_color = null;
+				try {
+				    rmsf_color = new Color( rgb_value, rgb_value, rgb_value );
+				} catch (Exception e) {
+				    System.err.println( "Could not create color with rgb_value: " + rgb_value );
+				    System.exit( 1 );
+				}
+
+				final int hash_code = rmsf_color.hashCode();
 				rmsf_image.setRGB( i, j, hash_code );
 			} // j
 		} // i
