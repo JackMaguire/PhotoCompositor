@@ -1,12 +1,17 @@
 #!/bin/bash
 
-application="app_one/AppOne"
-temp=`echo $application | sed 's:/:.:g'`
+#\rm -rf build
+if [ ! -d build ]; then
+    mkdir build
+fi
 
-runtime_flags=""
-#runtime_flags="-Xverify:none" #VisualVM
+for application in `grep 'public static void main' -r src | awk -F: '{print $1}' | awk -Fsrc/ '{print $2}' | awk -F.java '{print $1}'`; do
 
-\rm -rf build
-mkdir build
-javac -d build/ -cp src src/applications/${application}.java
-#java $runtime_flags -cp build applications.$temp
+    runtime_flags=""
+    #runtime_flags="-Xverify:none" #VisualVM
+
+    javac -d build/ -cp src src/${application}.java
+
+    #temp=`echo $application | sed 's:/:.:g'`
+    #java $runtime_flags -cp build $temp
+done
