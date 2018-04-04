@@ -1,3 +1,7 @@
+#Compiled Directories
+bin
+build
+
 #Emacs
 *~
 
