@@ -27,7 +27,7 @@ public class RMSF {
 			}
 		}
 
-		final BufferedImage rmsf_test = RMSFImage( images, 10 );
+		final BufferedImage rmsf_test = RMSFImage( images, 0.005 );
 		PhotoIO.imageToFile( rmsf_test, "rmsf_test.png", "PNG" );
 	}
 
